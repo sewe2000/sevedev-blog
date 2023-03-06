@@ -1,0 +1,57 @@
+<header>
+    <a href="{{ path('home_page') }}" class="logo">Sevedev</a>
+    <input type="checkbox" class="nav-toggle" id="nav-toggle">
+    <nav>
+	<ul>
+	    {% block options %}
+		<li class="dropdown">
+		    <a href="{{ path('top5') }}">Artykuły</a>
+		    <div class="sub-menu">
+			{% set counter = 0 %}
+			{% for categoryName in categories|keys %}
+			    <div class="menu-cell">
+				<h3 class="menu-category{% if counter < 4 %} top-heading{% endif %}">
+				    <a href="{{ path('categories', {category: categoryName}) }}">{{ categoryName ?? 'Kategoria'}}</a>
+				</h3>
+				<ul>
+				    {% for post in categories[categoryName] %}
+					<li><a href="{{ path('articles', { articleID: post.id }) }}">{{ post.name }}</a></li>
+				    {% endfor %}
+				</ul>
+			    </div>
+			    {% set counter = counter + 1 %}
+			{% endfor %}
+			</div>
+		</li>
+		<li>
+		    <a href="{{ path('contact') }}">Kontakt</a>
+		</li>
+		{% if user and user.isAdmin() %}
+		    <li>
+			<a href="{{ path('admin_panel') }}">Panel administratora</a>
+		    </li>
+		{% endif %}
+	    {% endblock %}
+	    {% if user %}
+		<li>
+		    <a href="{{ path('logout') }}">Wyloguj się</a>
+		</li>
+	    {% else %}
+		<li>
+		    <a href="{{ path('login') }}">Zaloguj się</a>
+		</li>
+		<li>
+		    <a href="{{ path('sign_in') }}">Zarejestruj się</a>
+		</li>
+	    {% endif %}
+	</ul>
+    </nav>
+    <label for="nav-toggle" class="nav-toggle-label" aria-controls="nav-toggle" aria-expanded="false">
+	    <svg class="hamburger" viewBox="0 0 100 100" width="20" height="20" fill="var(--color1)">
+		<rect class="top line" width="80" height="15" x="10" y="10" rx="5"></rect>
+		<rect class="middle line" width="80" height="15" x="10" y="45" rx="5"></rect>
+		<rect class="bottom line" width="80" height="15" x="10" y="80" rx="5"></rect>
+	    </svg>
+    </label>
+</header>
+

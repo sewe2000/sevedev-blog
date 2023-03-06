@@ -1,0 +1,16 @@
+<article>
+		<h2>O mnie</h2>
+		<p> Cześć! Nazywam się Seweryn, a ty trafiłeś/aś na mojego bloga! Ten blog jest poświęcony moim zainteresowaniom.
+		Interesuję się programowaniem, informatyką, piłką nożną, grą w szachy oraz grami wideo. Lubię także oglądać seriale i
+		okazjonalnie gram na instrumentach(pianinie i gitarze basowej).</p>
+		<p>Mam nadzieję, że spodoba ci się mój blog. Jeżeli masz jakąś propozycję wprowadzenia zmian do tej strony to skontaktuj się ze mną.
+		Kontakt do mnie podany jest na dole strony. Za wszelkie słowa pochwały i konstruktywnej krytyki z góry dziękuję.</p>
+		<hr>
+		<h2>Nowe artykuły</h2>
+		<ul>
+		   {% for post in posts %} 
+		       <li><b><a href="{# {{ path('articles', {slug: post.slug}) }} #}">{{ post.name }}</a></b></li>
+		   {% endfor %}
+		</ul>
+		
+</article> 

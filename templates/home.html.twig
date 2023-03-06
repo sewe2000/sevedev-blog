@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block meta %}
+	<meta name="author" content="Seweryn Pajor">
+	<meta name="description" content="Blog poświęcony programowaniu, informatyce i wielu innym rzeczom">
+{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+{% endblock %}
+
+{% block js %}
+	<script src="https://kit.fontawesome.com/370a890af0.js" crossorigin="anonymous"></script>
+	<script src="{{ asset('js/navbar.js') }}" defer></script>
+	<script src="https://kit.fontawesome.com/219e5302bf.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+	<h1>{{ heading }}</h1>
+	<div class="articles-container">
+	  {% for post in posts %}
+	     <a href="{{ path('articles', { articleID: post.id }) }}" class="article-link">
+	      <article>
+		      <img src="{{ asset('post_images/' ~ post.image) }}" alt="Obrazek do artykułu: {{ post.name }}" class="post-thumbnail">
+		  <section>
+		      <span class="post-date"><i class="fa-solid fa-calendar-days"></i> {{ post.date|date('d.m.Y') }}</span>
+		      <span class="post-category"><b>Kategoria:</b> {{ post.category.name }}</span>
+		      <h2>{{ post.name }}</h2>
+		      <p>{{ post.getBriefText|raw }}</p>
+		  </section>
+	      </article>
+	     </a>
+	  {% endfor %}
+	</div> 
+{% endblock %}

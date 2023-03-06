@@ -1,0 +1,31 @@
+{% extends 'forms/base_form.html.twig' %}
+{% block title %}Zarejestruj się w sevedev{% endblock %}
+{% block body %}
+{{ form_start(form) }}
+    <h1>Rejestracja</h1>
+    <hr>
+    <div class="error-msg">
+	{{ form_errors(form) }}
+    </div>
+    <div class="field">
+	{{ form_widget(form.username) }}
+	{{ form_label(form.username, 'Nazwa użytkownika') }}
+	<span></span>
+    </div>
+    <div class="field">
+	{{ form_widget(form.password) }}
+	{{ form_label(form.password, 'Hasło') }}
+	<span></span>
+    </div>
+    <div class="field">
+	{{ form_widget(form.email) }}
+	{{ form_label(form.email) }}
+	<span></span>
+    </div>
+    <div class="agreement">
+	{{ form_label(form.newsletter, 'Chcę otrzymywać powiadomienia o nowych artykułach na szrzynkę e-mail') }}
+	{{ form_widget(form.newsletter) }}
+    </div>
+    {{ form_row(form.submit, {label: 'Zarejestruj się'}) }}
+{{ form_end(form) }}
+{% endblock %}

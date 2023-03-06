@@ -1,0 +1,23 @@
+{% if user %}
+    {{ form_start(form) }}
+	<img src="{{ avatar_dir ~ user.avatarImage}}" alt="{{ user.username }}'s avatar">
+	{{ form_widget(form.contents, {attr: {placeholder: 'Napisz komentarz'}}) }}
+	{{ form_row(form.submit, {label: 'Opublikuj komentarz'}) }}
+    {{ form_end(form) }}
+{% endif %}
+<div class="comments-container">
+    <ul class="comments-list">
+	{% for comment in article.comments %} 
+	    <li>
+		    <div class="author-container">
+			<img src="{{ avatar_dir ~ comment.author.avatarImage }}" alt="{{ comment.author.username }}'s avatar">
+			<span>{{ comment.author.username }}</span>
+		    </div>
+		    <div class="comment-contents">
+			{{ comment.contents }}
+		    </div>
+	    </li>
+	{% endfor %}
+    </ul>
+</div>
+

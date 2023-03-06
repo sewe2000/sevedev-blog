@@ -1,0 +1,157 @@
+@import url('https://api.fonts.coollabs.io/css2?family=Roboto&display=swap');
+
+:root {
+
+    --color1: white;
+    --color2: black;
+    --color3: darkblue;
+    --grey-bg: hsl(240, 20%, 10%);
+    --grey: grey;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--grey-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--color3);
+}
+
+form h1 {
+    text-align: center;
+}
+
+form {
+    background-color: var(--color1);
+    padding: 2em;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.field {
+    border-bottom: 2px solid var(--grey);
+    position: relative;
+    margin-block: 1.5em;
+}
+
+.field input {
+    width: 100%;
+    height: 2em;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.field span::after {
+    content: '';
+    border-bottom: 2px solid var(--color3);
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.field label {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0.25em;
+    color: var(--grey);
+    font-size: 1rem;
+    transform: translateY(-50%);
+    transition: top .5s;
+}
+
+.field input:focus ~ label,
+.field input:valid ~ label {
+    top: -5px;
+    color: var(--color3);
+}
+
+.field input:focus ~ span::after,
+.field input:valid ~ span::after {
+    opacity: 1;
+}
+
+.forgot-pass {
+    margin-bottom: 1.5em;
+}
+
+.forgot-pass:hover {
+    color: var(--color3);
+}
+
+input[type="submit"],
+form button {
+    width: 100%;
+    height: 2.7em;
+    border: 2px solid lightblue;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--color1);
+    border-radius: 25px;
+    background-color: var(--color3);
+    outline: none;
+}
+
+input[type="submit"]:focus,
+input[type="submit"]:hover,
+form button:focus,
+form button:hover {
+    border-color: var(--color3);
+    transition: border-color .5s;
+}
+
+.signup {
+    margin-top: 1em;
+}
+
+a, a:visited, a:link {
+    text-decoration: none;
+    color: var(--grey);
+}
+
+form a:hover {
+    color: var(--color3);
+}
+
+.signup,
+.forgot-pass {
+    color: var(--grey);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.signup a:visited,
+.signup a:link {
+    color: var(--grey);
+    text-decoration: none;
+}
+
+.signup a:hover {
+    color: var(--color3);
+}
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}
+
+.agreement {
+    font-size: .9rem;
+    margin-block: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+.agreement input {
+    margin: 0;
+}

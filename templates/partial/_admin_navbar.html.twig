@@ -1,0 +1,10 @@
+{% extends 'partial/_navbar.html.twig' %}
+
+{% block options %}
+    <li>
+	<a href="{{ path('submit_post') }}">Dodaj post</a>
+    </li>
+    <li>
+	<a href="{{ path('add_category') }}" class="add-category">Dodaj kategorię</a>
+    </li>
+{% endblock %}

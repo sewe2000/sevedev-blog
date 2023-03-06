@@ -1,0 +1,33 @@
+{% extends 'forms/base_form.html.twig' %}
+{% block title %}Formularz kontaktowy - sevedev{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+{% block body %}
+{{ form_start(form) }}
+    <h1>Formularz kontaktowy</h1>
+    <hr>
+    <div class="error-msg">
+	{{ form_errors(form) }}
+    </div>
+    <div class="field">
+	{{ form_widget(form.name) }}
+	{{ form_label(form.name, 'Imię') }}
+	<span></span>
+    </div>
+    <div class="field">
+	{{ form_widget(form.surname) }}
+	{{ form_label(form.surname, 'Nazwisko') }}
+	<span></span>
+    </div>
+    <div class="field">
+	{{ form_widget(form.email) }}
+	{{ form_label(form.email, 'Email') }}
+	<span></span>
+    </div>
+    <div class="field">
+	{{ form_widget(form.message) }}
+    </div>
+    {{ form_row(form.submit, {label: 'Wyślij wiadomość'}) }}
+{{ form_end(form) }}
+{% endblock %}

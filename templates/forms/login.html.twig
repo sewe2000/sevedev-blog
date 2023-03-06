@@ -1,0 +1,32 @@
+{% extends 'forms/base_form.html.twig' %}
+{% block title %}Zaloguj się - sevedev{% endblock %}
+{% block body %}
+  <form action="{{ path('login') }}" method="POST">
+      <h1>Logowanie</h1>
+      <hr>
+      {% if error %}
+	  <div class="error-msg">{{ error.messageKey }}</div>
+      {% endif %}
+
+      <div class="field">
+	  <input type="text" id="username" name="_username" value="{{ last_username }}" required>
+	  <label for="username">Nazwa użytkownika</label>
+	  <span></span>
+      </div>
+
+      <div class="field">
+	  <input type="password" id="password" name="_password" required>
+	  <label for="password">Hasło</label>
+	  <span></span>
+      </div>
+
+      <input type="hidden" name="_target_path" value="/">
+      <div class="forgot-pass">
+	  <a href="#">Zapomniałeś/aś hasła?</a>
+      </div>
+      <input type="submit" value="Zaloguj się">
+      <div class="signup">
+	  Nie masz konta? <a href="{{ path('sign_in') }}">Zarejestruj się</a>
+      </div>
+  </form>
+{% endblock %}

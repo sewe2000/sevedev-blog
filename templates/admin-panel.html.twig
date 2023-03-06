@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel administratora{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" type="text/css">
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('js/admin.js') }}" defer></script>
+{% endblock %}
+
+{% block navbar %}
+    {% include('partial/_admin_navbar.html.twig') %}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Lista artykułów</h1>
+    {% if posts %}
+    <table style="border: 5px solid black">
+	<thead>
+	    <tr>
+		<th>Tytuł</th>
+		<th>Data publikacji</th>
+	    </tr>
+	</thead>
+	<tbody>
+	    {% for post in posts %}
+		<tr>
+		    <td>{{ post.name }}</td>
+		    <td>{{ post.date|date('d.m.Y') }}</td>
+		    <td><a href="{{ path('remove_post') }}" class="remove-link" data-id="{{ post.id }}">🗙</a></td>
+		</tr>
+	    {% endfor %}
+	</tbody>
+    </table>
+    {% else %}
+    <h2>Nie znaleziono żadnego artykułu!</h2>
+    {% endif %}
+
+{% endblock %}

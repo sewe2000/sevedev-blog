@@ -1,0 +1,409 @@
+/*
+   ==================
+   Global stylesheets
+   ==================
+*/
+
+/*
+  ==================
+  Table of contents
+
+  1. Custom properties
+  2. Typography
+  3. Layout.
+  4. Colorscheme
+  5. Media queries
+     5.1 Mobile layout
+     5.2 Mobile typography
+
+  ========================
+
+*/
+
+/* Custom properties */
+@import url('https://api.fonts.coollabs.io/css2?family=Pacifico&display=swap');
+@import url('https://api.fonts.coollabs.io/css2?family=Lato&display=swap');
+
+:root {
+    --color1: white;
+    --color2: black;
+    --color3: #cea716;
+    --grey-bg: hsl(240, 20%, 10%);
+}
+
+/* Typography */
+
+body {
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin-bottom: 3em;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-transform: uppercase;
+    margin-block: 1.2em;
+}
+
+
+/* Layout */
+
+.post-thumbnail {
+    width: 100%;
+}
+
+
+.post-category {
+    float: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+.articles-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.fa-calendar-days {
+    color: var(--color3);
+}
+
+/* Navigation styles */
+
+header {
+    background-color: var(--grey-bg);
+    color: var(--color1);
+    text-align: center;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+nav {
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    left: 0;
+    background-color: var(--grey-bg);
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 100%;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+    margin-block: 1em;
+    justify-content: center;
+}
+
+nav a {
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle:checked ~ nav {
+    transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-toggle-label[aria-expanded="true"] .top {
+    transform: translateY(35px);
+    rotate: 45deg;
+}
+
+.nav-toggle-label[aria-expanded="true"] .middle {
+    opacity: 0;
+}
+
+.nav-toggle-label[aria-expanded="true"] .bottom {
+    transform: translateY(-35px);
+    rotate: -45deg;
+}
+
+.line {
+    transform-origin: center;
+    transition:
+	transform 150ms ease-in 150ms,
+	rotate 150ms ease-in,
+	opacity 0ms 150ms;
+}
+
+.nav-toggle-label[aria-expanded="true"] .line {
+    transition:
+	transform 150ms ease-in,
+	rotate 150ms ease-in 150ms,
+	opacity 0ms 150ms;
+    ;
+}
+
+.sub-menu {
+    position: absolute;
+    width: 100%;
+    background-color: var(--grey-bg);
+    display: none;
+    left: 0;
+    top: 3.5em;
+    padding: 4em;
+}
+
+.sub-menu li,
+.sub-menu h3 {
+    text-align: left;
+    display: block;
+}
+
+.sub-menu li {
+    margin-block: .2em;
+    margin-inline: 0;
+}
+
+.sub-menu h3 {
+    font-family: sans-serif;
+    margin-top: 2em;
+    margin-bottom: .5em;
+}
+
+.sub-menu .top-heading {
+    margin-top: 0;
+}
+
+.sub-menu a {
+    all: unset;
+}
+
+.logo {
+    color: var(--color1);
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown {
+    height: 100%;
+}
+
+nav a {
+    color: var(--color1);
+    font-size: 1.2rem;
+}
+
+nav a:hover,
+footer a:hover:not(.social-container a) {
+    color: var(--color3);
+    cursor: pointer;
+}
+
+
+article {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+article section {
+    max-height: 30ch;
+    overflow: hidden;
+    padding-top: .7em;
+    padding: 1em;
+    position: relative;
+}
+
+article section p {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+p {
+    max-width: 75ch;
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+    background-color: var(--grey-bg);
+    color: var(--color1);
+    margin-top: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer h3 {
+    font-weight: 900;
+}
+
+footer a {
+    font-weight: 400;
+    color: lightgrey;
+}
+
+footer ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+footer ul li {
+    margin-block: 0.2em;
+}
+
+.switch {
+    position: absolute;
+    top: 1em;
+    right: 13%;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.article-link:visited,
+.article-link:link {
+    color: var(--color2);
+}
+
+.article-link {
+    margin-block: 2em;
+}
+
+.article-link:first-of-type {
+    margin-top: 0;
+}
+
+
+
+.social-container {
+    display: flex;
+    gap: 2em;
+}
+
+.social-container a {
+    font-size: 40px;
+}
+
+.social-container img {
+    width: 40px;
+    height: 40px;
+}
+/* Media queries */
+
+
+@media screen and (min-width: 800px) {
+    .nav-toggle-label {
+	display: none;
+    }
+
+    header {
+	display: grid;
+	grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
+    }
+
+    nav {
+	all: unset;
+	grid-column: 3 / 5;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 2em;
+	font-family: 'Lato', sans-serif;
+    }
+
+    nav > ul {
+	display: flex;
+    }
+
+    nav li {
+	margin-left: 3em;
+	margin-block: 0;
+    }
+
+    nav a {
+	opacity: 1;
+	position: relative;
+    }
+
+    .sub-menu a::before {
+	all: unset;
+    }
+
+    .sub-menu a::after {
+	all: unset;
+    }
+
+    nav a::before {
+	content: '';
+	display: block;
+	height: 5px;
+	background: var(--color3);
+	position: absolute;
+	bottom: -.75em;
+	left: 0;
+	right: 0;
+	transform: scale(0,1);
+	transition: transform ease-in-out 250ms;
+    }
+
+    nav a:hover::before {
+	transform: scale(1,1);
+    }
+
+    nav li:hover .sub-menu,
+    .sub-menu:hover {
+	display: grid; 
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 5em;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    footer {
+	flex-direction: column;
+    }
+}

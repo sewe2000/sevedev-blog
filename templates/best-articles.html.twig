@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block meta %}
+	<meta name="author" content="Seweryn Pajor">
+	<meta name="description" content="Blog poświęcony programowaniu, informatyce i wielu innym rzeczom">
+{% endblock %}
+{% block title %}Najpopularniejsze artykuły - sevedev{% endblock %}
+{% block css %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+	<script src="https://kit.fontawesome.com/219e5302bf.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block js %}
+	<script src="https://kit.fontawesome.com/370a890af0.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+	<main>
+	    <h1>Najpopularniejsze artykuły</h1>
+	    {% for categoryName in categories|keys %}
+		<h2>TOP 5 artykułów z kategorii {{ categoryName }}</h2>
+		<div class="articles-container">
+		    {% for post in categories[categoryName] %}
+			<a href="{{ path('articles', { articleID: post.id }) }}" class="article-link">
+			    <article>
+				<img src="{{ asset('post_images/' ~ post.image) }}" alt="Obrazek do artykułu: {{ post.name }}" class="post-thumbnail">
+				<section>
+				    <span class="post-date"><i class="fa-solid fa-calendar-days"></i> {{ post.date|date('d.m.Y') }}</span>
+				    <span class="post-category"><b>Kategoria:</b> {{ categoryName }}</span>
+				    <h3>{{ post.name }}</h3>
+				    <p>{{ post.getBriefText|raw }}</p>
+				</section>
+			    </article>
+			</a>
+		    {% endfor %}
+		</div>
+	    {% endfor %}
+	</main>
+{% endblock %}
+
