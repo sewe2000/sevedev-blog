@@ -7,14 +7,9 @@
 /public/bundles/
 /var/
 /vendor/
-###< symfony/framework-bundle ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
-
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
+/.env
+/public/post_images
 ###< symfony/phpunit-bridge ###
