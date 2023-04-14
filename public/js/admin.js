@@ -11,6 +11,9 @@ links.forEach(link => {
       fetch(this.href, {
 	method: 'POST',
 	body: formData
+      }).then((response) => {
+        if(response.ok)
+          location.reload();
       });
     }
   })
