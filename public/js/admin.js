@@ -14,6 +14,8 @@ links.forEach(link => {
       }).then((response) => {
         if(response.ok)
           location.reload();
+        else
+          alert('Nie udało się usunąć posta ;(');
       });
     }
   })
