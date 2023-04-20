@@ -1,0 +1,21 @@
+name: CD
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  symfony-deploy:
+    runs-on: self-hosted
+    env:
+      APP_ENV: prod
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: composer install --no-dev --optimize-autoloader
+    - name: Update .env
+      run: echo "${{secrets.env}}" > .env
+    - name: Run migrations
+      run: php bin/console doctrine:migrations:migrate
+    - name: Copy files
+      run: cp -r public/ /var/www/blog/public
