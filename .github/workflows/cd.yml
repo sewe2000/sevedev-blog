@@ -11,10 +11,10 @@ jobs:
       APP_ENV: prod
     steps:
     - uses: actions/checkout@v3
+    - name: Set up .env
+      run: echo "${{secrets.DATABASE_URL}}" > .env && echo "APP_ENV=$APP_ENV" >> .env
     - name: Install Dependencies
       run: composer install --no-dev --optimize-autoloader
-    - name: Set up .env
-      run: echo "${{secrets.DATABASE_URL}}" > .env
     - name: Run migrations
       run: php bin/console doctrine:migrations:migrate
     - name: Copy files
