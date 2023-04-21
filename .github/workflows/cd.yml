@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up .env
-      run: echo "DATABASE_URL=${{secrets.DATABASE_URL}}" > .env
+      run: printf "DATABASE_URL=${{secrets.DATABASE_URL}}\nAPP_SECRET=${{secrets.APP_SECRET}}" > .env
     - name: Install Dependencies
       run: composer install --no-dev --optimize-autoloader
     - name: Run migrations
