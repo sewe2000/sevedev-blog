@@ -31,6 +31,7 @@
 		<tr>
 		    <td>{{ post.name }}</td>
 		    <td>{{ post.date|date('d.m.Y') }}</td>
+			<td><a href="{{ path('edit_post', { id: post.id }) }}" class="edit-post-button">Edytuj</a></td>
 		    <td><a href="{{ path('remove_post') }}" class="remove-link" data-id="{{ post.id }}">🗙</a></td>
 		</tr>
 	    {% endfor %}

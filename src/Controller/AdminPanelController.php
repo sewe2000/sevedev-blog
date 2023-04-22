@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Form\BlogPostType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,6 +35,23 @@ class AdminPanelController extends AbstractController
 
         return $this->redirectToRoute('admin_panel');
     }
+    #[Route('/post/edit', name: 'edit_post')]
+    public function editPost(Request $request, ManagerRegistry $registry) :Response
+    {
+        $entityMgr = $registry->getManager();
+        $blogPostId = $request->get('id');
+        $blogPost = $entityMgr->getRepository(BlogPost::class)->find($blogPostId);
+        $form = $this->createForm(BlogPostType::class, $blogPost);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityMgr->persist($blogPost);
+            $entityMgr->flush();
+            return $this->redirectToRoute('admin_panel');
+        }
+        return $this->render('forms/submit-post.html.twig', ['form' => $form]);
+    }
+
 
     #[Route('/addcategory', name: 'add_category')]
     public function addCategory(Request $request, ManagerRegistry $reg) :Response
