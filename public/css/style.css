@@ -402,6 +402,12 @@ footer ul li {
 
 @media screen and (max-width: 799px) {
     footer {
-	flex-direction: column;
+	    flex-direction: column;
+        text-align: center;
+    }
+
+    footer div {
+        align-items: center;
+        justify-content: center;
     }
 }

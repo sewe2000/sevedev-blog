@@ -10,7 +10,6 @@
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
-.env
 /public/post_images
 .idea/
 .log/
