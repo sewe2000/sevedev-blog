@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CommentsController extends AbstractController
 {
-    #[Route('/add-comment/{post}', name: 'submit_comment')]
+    #[Route('/posts/{post}/comments', name: 'submit_comment')]
     public function create(ManagerRegistry $reg, BlogPost $post, Request $req) :Response {
 
         

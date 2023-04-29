@@ -15,7 +15,7 @@
 				</h3>
 				<ul>
 				    {% for post in categories[categoryName] %}
-					<li><a href="{{ path('articles', { articleID: post.id }) }}">{{ post.name }}</a></li>
+					<li><a href="{{ path('posts', { postId: post.id }) }}">{{ post.name }}</a></li>
 				    {% endfor %}
 				</ul>
 			    </div>

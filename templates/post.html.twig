@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block meta %}
+    <meta name="author" content="Seweryn Pajor">
+    <meta name="description" content="Blog poświęcony programowaniu, informatyce i wielu innym rzeczom">
+{% endblock %}
+{% block title %}{{ article.name }} - sevedev{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/comments.css') }}" type="text/css">
+    <script src="https://kit.fontawesome.com/219e5302bf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block js %}
+    <script src="https://kit.fontawesome.com/370a890af0.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+    <main>
+        <h1>{{ article.name }}</h1>
+        {{ article.html|raw }}
+    </main>
+    {{ render(controller('App\\Controller\\CommentsController::read', {blogPost: article})) }}
+{% endblock %}

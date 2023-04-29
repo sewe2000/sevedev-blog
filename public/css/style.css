@@ -335,44 +335,44 @@ footer ul li {
 
 @media screen and (min-width: 800px) {
     .nav-toggle-label {
-	display: none;
+	    display: none;
     }
 
     header {
-	display: grid;
-	grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
+	    display: grid;
+	    grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
     }
 
     nav {
 	all: unset;
-	grid-column: 3 / 5;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	margin-right: 2em;
-	font-family: 'Lato', sans-serif;
+	    grid-column: 3 / 5;
+	    display: flex;
+	    justify-content: flex-end;
+	    align-items: center;
+	    margin-right: 2em;
+	    font-family: 'Lato', sans-serif;
     }
 
     nav > ul {
-	display: flex;
+	    display: flex;
     }
 
     nav li {
-	margin-left: 3em;
-	margin-block: 0;
+	    margin-left: 3em;
+	    margin-block: 0;
     }
 
     nav a {
-	opacity: 1;
-	position: relative;
+	    opacity: 1;
+	    position: relative;
     }
 
     .sub-menu a::before {
-	all: unset;
+	    all: unset;
     }
 
     .sub-menu a::after {
-	all: unset;
+	    all: unset;
     }
 
     nav a::before {

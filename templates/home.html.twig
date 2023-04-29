@@ -17,7 +17,7 @@
 	<h1>{{ heading }}</h1>
 	<div class="articles-container">
 	  {% for post in posts %}
-	     <a href="{{ path('articles', { articleID: post.id }) }}" class="article-link">
+	     <a href="{{ path('posts', { postId: post.id }) }}" class="article-link">
 	      <article>
 		      <img src="{{ asset('post_images/' ~ post.image) }}" alt="Obrazek do artykułu: {{ post.name }}" class="post-thumbnail">
 		  <section>

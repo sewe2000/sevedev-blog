@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BlogPostRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -21,19 +22,19 @@ class BlogPost
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
+    private ?DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $html = null;
+    private string $html = '';
 
     #[ORM\Column(type: Types::STRING)]
-    private ?string $image = null;
+    private string $image = '';
 
     #[ORM\Column(type: Types::STRING)]
     private string $shortName = '';
 
     #[ORM\ManyToOne(targetEntity: PostCategory::class, inversedBy: 'posts')]
-    private $category = null;
+    private PostCategory|null $category = null;
 
     #[ORM\Column]
     private ?int $likes = 0;
@@ -79,12 +80,12 @@ class BlogPost
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -108,7 +109,7 @@ class BlogPost
         return $this->image;
     }
 
-    public function setImage($img) : self
+    public function setImage(string $img) : self
     {
         $this->image = $img;
         return $this;
