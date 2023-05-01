@@ -45,6 +45,10 @@ main {
     margin-bottom: 3em;
 }
 
+main > * {
+    padding-inline: 20%;
+}
+
 h1, h2 {
     text-align: center;
     font-family: 'Roboto', sans-serif;
