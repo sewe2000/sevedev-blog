@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <script src="https://kit.fontawesome.com/219e5302bf.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block title %}Mail do zmiany hasła wysłany!{% endblock %}
+
+{% block body %}
+    <p>
+        Jeśli istnieje konto zarejestrowane na podany adres email to wtedy mail resetujący hasło zostanie wysłany.
+        Ten link wygaśnie za: {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p style="margin: 1em;">Jeśli nie otrzymałeś/aś maila to proszę sprawdź folder spamu albo <a href="{{ path('app_forgot_password_request') }}">spróbuj jeszcze raz</a>.</p>
+{% endblock %}
