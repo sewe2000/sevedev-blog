@@ -31,9 +31,10 @@ class BlogPostType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            'image/svg+xml',
                             'image/webp'
                         ],
-                        'mimeTypesMessage' => 'Załącz obrazek *.png, *.jpg lub *.webp!',
+                        'mimeTypesMessage' => 'Załącz obrazek *.png, *.jpg, *.webp lub *.svg!',
                     ])
                     
                 ],
